@@ -24,6 +24,7 @@
       in rec {
         packages = {
           webserver =  pkgs.writeShellScriptBin "my-script" ''
+          export COWSAY="${pkgs.cowsay}/bin/cowsay"
           ${pythonEnv}/bin/python app.py
           '';
           default = packages.webserver;
