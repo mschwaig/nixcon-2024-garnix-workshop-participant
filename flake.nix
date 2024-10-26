@@ -48,16 +48,16 @@
           ({ pkgs, ... }: {
             playerConfig = {
               # Your github user:
-              githubLogin = "GITHUB_USER";
+              githubLogin = "mschwaig";
               # You only need to change this if you changed the forked repo name.
-              githubRepo = "nixcon-2024-player-template";
+              githubRepo = "nixcon-2024-garnix-workshop-participant";
               # The nix derivation that will be used as the server process. It
               # should open a webserver on port 8080.
               # The port is also provided to the process as the environment variable "PORT".
               webserver = self.packages.${system}.webserver;
               # If you want to log in to your deployed server, put your SSH key
               # here:
-              sshKey = "<YOUR_PUBLIC_SSH_KEY>";
+              sshKey = "AAAAC3NzaC1lZDI1NTE5AAAAIHNdCt+2TSagVo60uRwVcmqpnw4dmObs1v8texBvAoCR";
             };
           })
         ];
