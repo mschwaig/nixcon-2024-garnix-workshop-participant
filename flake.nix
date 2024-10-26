@@ -36,6 +36,7 @@
               runtimeInputs = [ pkgs.cowsay ];
               runtimeEnv = {
                 PORT = "8080";
+                COWSAY = "${pkgs.cowsay}/bin/cowsay";
               };
               text = ''
                 ${pkgs.lib.getExe packages.webserver}

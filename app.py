@@ -9,7 +9,7 @@ def cowsay(message: str) -> str:
     """Run cowsay with the given message."""
     try:
         result = subprocess.run(
-            ["cowsay", message],
+            [os.environ.get('COWSAY'), message],
             capture_output=True,
             text=True,
             shell=False
