@@ -18,10 +18,13 @@
     in
     (flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let pkgs = import nixpkgs { inherit system; };
+          pythonEnv = pkgs.python3.withPackages (ps: with ps; [
+            flask
+        ]);
       in rec {
         packages = {
           webserver =  pkgs.writeShellScriptBin "my-script" ''
-          ${pkgs.python3}/bin/python -m http.server $PORT
+          ${pkgs.python3}/bin/python app.py
           '';
           default = packages.webserver;
         };
