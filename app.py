@@ -4,6 +4,20 @@ import uuid
 
 app = Flask(__name__)
 
+def cowsay(message: str) -> str:
+    """Run cowsay with the given message."""
+    try:
+        result = subprocess.run(
+            ["cowsay", message],
+            capture_output=True,
+            text=True,
+            shell=False
+        )
+        return result.stdout
+    except subprocess.SubprocessError as e:
+        return f"Error running cowsay: {e}"
+
+
 @app.route('/')
 def hello():
     return 'Hello, World!'
@@ -22,7 +36,7 @@ def uuid():
 
 @app.route('/cowsay/<message>')
 def uuid(message):
-    return str(uuid.uuid4() + message)
+    return str(cowsay(message))
 
 if __name__ == '__main__':
     app.run(port = os.environ.get('PORT'))
