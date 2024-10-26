@@ -20,7 +20,9 @@
       let pkgs = import nixpkgs { inherit system; };
       in rec {
         packages = {
-          webserver = pkgs.hello;
+          webserver =  pkgs.writeShellScriptBin "my-script" ''
+          ${pkgs.python3}/bin/python -m http.server $PORT
+          '';
           default = packages.webserver;
         };
         apps.default = {
