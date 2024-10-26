@@ -24,7 +24,7 @@
       in rec {
         packages = {
           webserver =  pkgs.writeShellScriptBin "my-script" ''
-          ${pkgs.python3}/bin/python app.py
+          ${pythonEnv}/bin/python app.py
           '';
           default = packages.webserver;
         };
