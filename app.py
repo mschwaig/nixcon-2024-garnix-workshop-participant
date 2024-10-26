@@ -18,6 +18,11 @@ def cowsay(message: str) -> str:
     except subprocess.SubprocessError as e:
         return f"Error running cowsay: {e}"
 
+@app.after_request
+def add_header(response):
+    response.mimetype = 'text/plain'
+    return response
+
 
 @app.route('/')
 def hello():
