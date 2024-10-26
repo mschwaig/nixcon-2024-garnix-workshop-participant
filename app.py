@@ -35,7 +35,7 @@ def uuid_():
     return str(uuid.uuid4())
 
 @app.route('/cowsay/<message>')
-def cowsay(message):
+def _cowsay(message):
     return str(cowsay(message))
 
 if __name__ == '__main__':

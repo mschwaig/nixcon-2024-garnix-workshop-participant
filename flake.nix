@@ -33,6 +33,7 @@
           program = pkgs.lib.getExe (
             pkgs.writeShellApplication {
               name = "start-webserver";
+              runtimeInputs = [ pkgs.cowsay ];
               runtimeEnv = {
                 PORT = "8080";
               };
